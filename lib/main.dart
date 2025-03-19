@@ -176,16 +176,16 @@ class _FirstPageState extends State<FirstPage> {
 
             ElevatedButton(
               onPressed: () {
-                VwoFlutter.startRecording();
+                VwoFlutter.resumeRecording();
               },
-              child: const Text('Start Rec'),
+              child: const Text('Resume Rec'),
             ),
 
             const SizedBox(height: 20),
 
             ElevatedButton(
               onPressed: () {
-              VwoFlutter.stopRecording();
+              VwoFlutter.pauseRecording();
               },
               child: const Text('Pause Rec'),
             ),
