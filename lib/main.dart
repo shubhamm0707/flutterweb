@@ -155,23 +155,39 @@ class _FirstPageState extends State<FirstPage> {
                 final Map<String, dynamic> attributes = {};
                 attributes["email"] = "abc@xyz.com";
                 attributes["name"] = "VWO Insights";
-                VwoFlutter.stopRecording();
+                VwoFlutter.sendCustomAttribute(attributes);
               },
               child: const Text('Custom attribute'),
             ),
 
             const SizedBox(height: 20),
 
-            VwoWrapper(
-              child: ElevatedButton(
-                onPressed: () {
-                  final Map<String, dynamic> addToCartEvent = {};
-                  addToCartEvent["productName"] = "VWO Insights";
-                  addToCartEvent["productQuantity"] = 1;
-                  VwoFlutter.startRecording();
-                },
-                child: const Text('Custom Event'),
-              ),
+            ElevatedButton(
+              onPressed: () {
+                final Map<String, dynamic> addToCartEvent = {};
+                addToCartEvent["productName"] = "VWO Insights";
+                addToCartEvent["productQuantity"] = 1;
+                VwoFlutter.sendCustomEvent("addToCart", addToCartEvent);
+              },
+              child: const Text('Custom Event'),
+            ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                VwoFlutter.startRecording();
+              },
+              child: const Text('Start Rec'),
+            ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+              VwoFlutter.stopRecording();
+              },
+              child: const Text('Pause Rec'),
             ),
 
             const SizedBox(height: 20),
