@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:js/js_util.dart' as js_util;
 import 'dart:html' as html;
 
-import 'package:vwo_insights_flutter_sdk/vwo_insights_flutter_sdk.dart';
+// import 'package:vwo_insights_flutter_sdk/vwo_insights_flutter_sdk.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +43,7 @@ class _FirstPageState extends State<FirstPage> {
     super.initState();
     _updateUrl('/');
     _startTimer();
+    // VwoFlutter.resumeRecording();
   }
 
   void _updateUrl(String path) {
@@ -134,8 +135,7 @@ class _FirstPageState extends State<FirstPage> {
             const SizedBox(height: 20),
 
             // Existing VWO Text Field
-            VwoWrapper(
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: TextField(
                   controller: _inputController,
@@ -145,7 +145,6 @@ class _FirstPageState extends State<FirstPage> {
                   ),
                 ),
               ),
-            ),
 
             const SizedBox(height: 20),
 
@@ -155,7 +154,7 @@ class _FirstPageState extends State<FirstPage> {
                 final Map<String, dynamic> attributes = {};
                 attributes["email"] = "abc@xyz.com";
                 attributes["name"] = "VWO Insights";
-                VwoFlutter.sendCustomAttribute(attributes);
+               // VwoFlutter.sendCustomAttribute(attributes);
               },
               child: const Text('Custom attribute'),
             ),
@@ -167,7 +166,7 @@ class _FirstPageState extends State<FirstPage> {
                 final Map<String, dynamic> addToCartEvent = {};
                 addToCartEvent["productName"] = "VWO Insights";
                 addToCartEvent["productQuantity"] = 1;
-                VwoFlutter.sendCustomEvent("addToCart", addToCartEvent);
+               // VwoFlutter.sendCustomEvent("addToCart", addToCartEvent);
               },
               child: const Text('Custom Event'),
             ),
@@ -176,7 +175,7 @@ class _FirstPageState extends State<FirstPage> {
 
             ElevatedButton(
               onPressed: () {
-                VwoFlutter.resumeRecording();
+               // VwoFlutter.resumeRecording();
               },
               child: const Text('Resume Rec'),
             ),
@@ -185,7 +184,7 @@ class _FirstPageState extends State<FirstPage> {
 
             ElevatedButton(
               onPressed: () {
-              VwoFlutter.pauseRecording();
+             // VwoFlutter.pauseRecording();
               },
               child: const Text('Pause Rec'),
             ),
